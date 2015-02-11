@@ -87,14 +87,36 @@ class MovieData
 	def run_predictions(test_data)
 		all_predictions = []
 		test_data.each do |arr|
-			all_predictions << (arr << predict(arr[0], arr[1]).round)
+			all_predictions << (arr << predict(arr[0], arr[1]))
 		end
 		all_predictions
 	end
+	#returns the rating the user gave the movie
+	def rating(user, movie)
+		@user_hash[user].ratings_tuple.each do |rating|
+			return rating.last if rating.first == movie
+		end
+		nil
+	end
+	#returns the movies seen by a user
+	def movies(user)
+		@user_hash[user].movies_rated_ids
+	end
+	#my movies-1 was specifically made to not do this. A movie shouldn't need to know who has seen it, and as such this function is extremely inefficient
+	def viewers(movie)
+		users = []
+		@user_hash.keys.each do |user|
+			users << user if rating(user, movie) != nil
+		end
+		users
+	end
+
 end
-m = MovieData.new('ml-100k', :u1)
-t = m.run_test(10)
+puts Time.now
+m = MovieData.new('ml-100k', :ua)
+t = m.run_test()
 t.mean
 t.stddev
 t.rms
 t.to_a
+puts Time.now

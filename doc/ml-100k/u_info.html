@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>allbut.pl - RDoc Documentation</title>
+<title>u.info - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -112,41 +112,9 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page ml-100k/allbut.pl">
+<main role="main" aria-label="Page ml-100k/u.info">
 
-<p>#!/usr/local/bin/perl</p>
-
-<p># get args if (@ARGV &lt; 3) {</p>
-
-<pre class="ruby"><span class="ruby-identifier">print</span> <span class="ruby-constant">STDERR</span> <span class="ruby-string">&quot;Usage: $0 base_name start stop max_test [ratings ...]\n&quot;</span>;
-<span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>;
-</pre>
-
-<p>} $basename = shift; $start = shift; $stop = shift; $maxtest = shift;</p>
-
-<p># open files open( TESTFILE, “&gt;$basename.test” ) or die “Cannot open
-$basename.test for writingn”; open( BASEFILE, “&gt;$basename.base” ) or die
-“Cannot open $basename.base for writingn”;</p>
-
-<p># init variables $testcnt = 0;</p>
-
-<p>while (&lt;&gt;) {</p>
-
-<pre>($user) = split;
-if (! defined $ratingcnt{$user}) {
-        $ratingcnt{$user} = 0;
-}
-++$ratingcnt{$user};
-if (($testcnt &lt; $maxtest || $maxtest &lt;= 0)
-&amp;&amp; $ratingcnt{$user} &gt;= $start &amp;&amp; $ratingcnt{$user} &lt;= $stop) {
-        ++$testcnt;
-        print TESTFILE;
-}
-else {
-        print BASEFILE;
-}</pre>
-
-<p>}</p>
+<p>943 users 1682 items 100000 ratings</p>
 </main>
 
 

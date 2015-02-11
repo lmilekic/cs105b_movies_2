@@ -74,6 +74,8 @@
     
     <li ><a href="#method-i-add_rating">#add_rating</a>
     
+    <li ><a href="#method-i-add_to_rating_tuple">#add_to_rating_tuple</a>
+    
   </ul>
 </div>
 
@@ -145,6 +147,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-ratings_tuple" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ratings_tuple</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-total_ratings_sum" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">total_ratings_sum</span><span
@@ -193,6 +208,7 @@
         <span class="ruby-ivar">@movies_rated_ids</span> = []
         <span class="ruby-ivar">@average_rating_given</span> = <span class="ruby-value">0</span>
         <span class="ruby-ivar">@total_ratings_sum</span> = <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@ratings_tuple</span> = []
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -231,12 +247,46 @@
 
           
           <div class="method-source-code" id="add_rating-source">
-            <pre><span class="ruby-comment"># File user.rb, line 9</span>
+            <pre><span class="ruby-comment"># File user.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_rating</span>(<span class="ruby-identifier">movie_id</span>, <span class="ruby-identifier">rating_given</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add_to_rating_tuple</span>(<span class="ruby-identifier">movie_id</span>, <span class="ruby-identifier">rating_given</span>)
         <span class="ruby-ivar">@movies_rated_ids</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">movie_id</span>
         <span class="ruby-ivar">@total_ratings_sum</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">rating_given</span>
         <span class="ruby-ivar">@average_rating_given</span> =  <span class="ruby-ivar">@total_ratings_sum</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@movies_rated_ids</span>.<span class="ruby-identifier">length</span>
         <span class="ruby-ivar">@average_rating_given</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-add_to_rating_tuple" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_to_rating_tuple</span><span
+            class="method-args">(movie_id, rating)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_to_rating_tuple-source">
+            <pre><span class="ruby-comment"># File user.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_to_rating_tuple</span>(<span class="ruby-identifier">movie_id</span>, <span class="ruby-identifier">rating</span>)
+        <span class="ruby-ivar">@ratings_tuple</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">movie_id</span>, <span class="ruby-identifier">rating</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -80,11 +80,15 @@
     
     <li ><a href="#method-i-most_similar">#most_similar</a>
     
+    <li ><a href="#method-i-movies">#movies</a>
+    
     <li ><a href="#method-i-popularity">#popularity</a>
     
     <li ><a href="#method-i-popularity_list">#popularity_list</a>
     
     <li ><a href="#method-i-predict">#predict</a>
+    
+    <li ><a href="#method-i-rating">#rating</a>
     
     <li ><a href="#method-i-read_test_data">#read_test_data</a>
     
@@ -93,6 +97,8 @@
     <li ><a href="#method-i-run_test">#run_test</a>
     
     <li ><a href="#method-i-similarity">#similarity</a>
+    
+    <li ><a href="#method-i-viewers">#viewers</a>
     
   </ul>
 </div>
@@ -322,6 +328,39 @@
       </div>
 
     
+      <div id="method-i-movies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">movies</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns the movies seen by a user</p>
+          
+          
+
+          
+          <div class="method-source-code" id="movies-source">
+            <pre><span class="ruby-comment"># File movie_data.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">movies</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-ivar">@user_hash</span>[<span class="ruby-identifier">user</span>].<span class="ruby-identifier">movies_rated_ids</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-popularity" class="method-detail ">
         
         <div class="method-heading">
@@ -411,6 +450,42 @@
             <pre><span class="ruby-comment"># File movie_data.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">predict</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">movie</span>)
         <span class="ruby-ivar">@user_hash</span>[<span class="ruby-identifier">user</span>].<span class="ruby-identifier">average_rating_given</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-rating" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rating</span><span
+            class="method-args">(user, movie)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns the rating the user gave the movie</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rating-source">
+            <pre><span class="ruby-comment"># File movie_data.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rating</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">movie</span>)
+        <span class="ruby-ivar">@user_hash</span>[<span class="ruby-identifier">user</span>].<span class="ruby-identifier">ratings_tuple</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rating</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">last</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">movie</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -560,6 +635,45 @@
             <pre><span class="ruby-comment"># File movie_data.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">similarity</span>(<span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span>)
         <span class="ruby-value">5</span> <span class="ruby-operator">-</span> (<span class="ruby-ivar">@user_hash</span>[<span class="ruby-identifier">user1</span>].<span class="ruby-identifier">average_rating_given</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@user_hash</span>[<span class="ruby-identifier">user2</span>].<span class="ruby-identifier">average_rating_given</span>).<span class="ruby-identifier">abs</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-viewers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">viewers</span><span
+            class="method-args">(movie)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>my movies-1 was specifically made to not do this. A movie shouldn&#39;t
+need to know who has seen it, and as such this function is extremely
+inefficient</p>
+          
+          
+
+          
+          <div class="method-source-code" id="viewers-source">
+            <pre><span class="ruby-comment"># File movie_data.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">viewers</span>(<span class="ruby-identifier">movie</span>)
+        <span class="ruby-identifier">users</span> = []
+        <span class="ruby-ivar">@user_hash</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">users</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">user</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">rating</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">movie</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">users</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
